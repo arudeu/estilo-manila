@@ -20,3 +20,38 @@ code {
 .carousel-item {
   height: 600px;
 }
+.carousel-caption{
+  left: 1 !important;
+  top: 40%;
+  text-align: left !important;
+}
+.carousel-caption h1{
+  font-size: 5rem;
+}
+.carousel-caption p{
+  font-size: 1.2rem;
+}
+#user-icon{
+  font-size: 1.5rem;
+}
+.navbar {
+  font-size: 1.2rem !important;
+}
+.nav-link, .dropdown-item{
+  padding-right: 1.2rem !important;
+  padding-left: 1.2rem !important;
+  color: black !important;
+  border-radius: 10px !important;
+}
+.nav-link:hover, .dropdown-item:hover{
+  background-color: black !important;
+  color: white !important;
+  transition: all 0.3s;
+}
+.dropdown-menu{
+  background: white !important;
+  border: none !important;
+  padding-left: 0.7rem !important;
+  padding-right: 0.7rem !important;
+  font-size: 1.2rem !important;
+}
