@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
+import { Container } from "react-bootstrap";
+
+// PAGES
+import Home from "./pages/Home";
 
 function App() {
+  const [user, setUser] = useState({
+    id: null,
+    isAdmin: null,
+  });
+
+  function unsetUser() {
+    localStorage.clear();
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <UserProvider value={{ user, setUser, unsetUser }}>
+        <Router>
+          {/* NAVBAR HERE */}
+          <Container>
+            <Routes>
+              {/* ROUTE HERE */}
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Container>
+        </Router>
+      </UserProvider>
+    </>
   );
 }
 
