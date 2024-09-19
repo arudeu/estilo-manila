@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import { Container } from "react-bootstrap";
 import NavigationBar from "./components/AppNavbar";
+import Error from "./pages/Error";
 
 // PAGES
 import Home from "./pages/Home";
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             {/* ROUTE HERE */}
             <Route path="/" element={<Home />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </Router>
       </UserProvider>
