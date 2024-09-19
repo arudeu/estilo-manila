@@ -20,12 +20,10 @@ function App() {
       <UserProvider value={{ user, setUser, unsetUser }}>
         <Router>
           {/* NAVBAR HERE */}
-          <Container fluid>
-            <Routes>
-              {/* ROUTE HERE */}
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Container>
+          <Routes>
+            {/* ROUTE HERE */}
+            <Route path="/" element={<Home />} />
+          </Routes>
         </Router>
       </UserProvider>
     </>
