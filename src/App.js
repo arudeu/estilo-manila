@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 
 // PAGES
 import Home from "./pages/Home";
+import Register from "./pages/Register"
 
 function App() {
   const [user, setUser] = useState({
@@ -27,6 +28,7 @@ function App() {
             {/* ROUTE HERE */}
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
+            <Route path="/Register" element={<Register />} />
           </Routes>
           <Footer />
         </Router>
