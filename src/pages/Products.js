@@ -14,15 +14,7 @@ export default function Products() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setProducts(
-          data.map((product) => {
-            return (
-              <SwiperSlide>
-                <AppCard key={product._id} />
-              </SwiperSlide>
-            );
-          })
-        );
+        setProducts(data);
       });
   }, []);
   return (
@@ -38,15 +30,13 @@ export default function Products() {
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
         >
-          <SwiperSlide>
-            <AppCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <AppCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <AppCard />
-          </SwiperSlide>
+          {products.map((product) => {
+            return (
+              <SwiperSlide key={product._id}>
+                <AppCard productProp={product} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </Row>
     </Container>
