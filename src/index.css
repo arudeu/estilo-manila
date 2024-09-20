@@ -9,14 +9,22 @@ h1{
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.error{
+  min-height: 58vh;
+}
+.carousel{
+  border-bottom: 1px solid black;
+}
 .carousel-item {
   height: 600px;
 }
@@ -36,6 +44,7 @@ code {
 }
 .navbar {
   font-size: 1.2rem !important;
+  border-bottom: 1px solid black;
 }
 .nav-link, .dropdown-item{
   padding-right: 1.2rem !important;
@@ -54,4 +63,48 @@ code {
   padding-left: 0.7rem !important;
   padding-right: 0.7rem !important;
   font-size: 1.2rem !important;
+}
+.card{
+  border: 1px solid black !important;
+  border-radius: none !important;
+  min-height: 30rem !important;
+  background-position: center;
+  background-size: cover;
+  transition: ease-in-out 0.2s !important;
+}
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.03);
+}
+.card-title{
+  font-size: 2.5rem !important;
+}
+.card-text{
+  font-size: 1.3rem !important;
+}
+.footer{
+  border-top: 1px solid black;
+  margin-top: 10px;
+  position: absolute;
+}
+.footer p {
+  font-size: 12px;
+  font-weight: 500;
+}
+.footer-list{
+  list-style: none;
+}
+
+.carousel-inner .carousel-item > img {
+  -webkit-animation: thing 20s;
+  -o-animation: thing 20s;
+  animation: thing 20s; 
+}
+@keyframes thing {
+  from {
+     transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.3, 1.3);
+  }
 }

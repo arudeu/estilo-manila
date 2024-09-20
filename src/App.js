@@ -4,6 +4,7 @@ import { UserProvider } from "./context/UserContext";
 import { Container } from "react-bootstrap";
 import NavigationBar from "./components/AppNavbar";
 import Error from "./pages/Error";
+import Footer from "./components/Footer";
 
 // PAGES
 import Home from "./pages/Home";
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
           </Routes>
+          <Footer />
         </Router>
       </UserProvider>
     </>

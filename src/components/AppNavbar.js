@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-function NavigationBar() {
+export default function NavigationBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -45,4 +45,3 @@ function NavigationBar() {
   );
 }
 
-export default NavigationBar;

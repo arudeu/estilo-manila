@@ -1,7 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
-function AppCarousel() {
+export default function AppCarousel() {
   const carouselData = [
     {
       header: "Own the Streets",
@@ -50,5 +50,3 @@ function AppCarousel() {
     </Carousel>
   );
 }
-
-export default AppCarousel;
