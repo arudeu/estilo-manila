@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 // PAGES
 import Home from "./pages/Home";
 import Register from "./pages/Register"
+import Login from "./pages/Login"
 
 function App() {
   const [user, setUser] = useState({
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
           <Footer />
         </Router>
