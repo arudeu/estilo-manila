@@ -29,21 +29,21 @@ export default function AppCarousel() {
       <Carousel.Item interval={5000}>
         <Image src={carouselData[0].image} fluid />
         <Carousel.Caption>
-          <h1>{carouselData[0].header}</h1>
+          <h1 className="fw-bolder">{carouselData[0].header}</h1>
           <p>{carouselData[0].description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
         <Image src={carouselData[1].image} fluid />
         <Carousel.Caption>
-          <h1>{carouselData[1].header}</h1>
+          <h1 className="fw-bolder">{carouselData[1].header}</h1>
           <p>{carouselData[1].description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
         <Image src={carouselData[2].image} fluid />
         <Carousel.Caption>
-          <h1>{carouselData[2].header}</h1>
+          <h1 className="fw-bolder">{carouselData[2].header}</h1>
           <p>{carouselData[2].description}</p>
         </Carousel.Caption>
       </Carousel.Item>

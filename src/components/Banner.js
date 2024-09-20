@@ -5,7 +5,7 @@ export default function Banner({ data }) {
   const { title, content, destination, buttonLabel } = data;
 
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
         <Col className="text-center">
           <h1 className="fw-bolder">{title}</h1>
