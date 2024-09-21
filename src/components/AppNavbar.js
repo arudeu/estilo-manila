@@ -1,11 +1,15 @@
+import { useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 export default function NavigationBar() {
+  const { user } = useContext(UserContext);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -26,22 +30,32 @@ export default function NavigationBar() {
             <Nav.Link as={NavLink} to="/products">
               Products
             </Nav.Link>
-            <NavDropdown
-              title={<FaRegUserCircle id="user-icon" />}
-              className="justify-content-end ms-auto"
-              id="basic-nav-dropdown "
-            >
-              <NavDropdown.Item as={NavLink} to="/login">
-                Login
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/register">
-                Register
-              </NavDropdown.Item>
-            </NavDropdown>
+            {user.id !== null ? (
+              <>
+                <Nav.Link as={NavLink} to="/profile" exact="true">
+                  Profile
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/logout">
+                  Logout
+                </Nav.Link>
+              </>
+            ) : (
+              <NavDropdown
+                title={<FaRegUserCircle id="user-icon" />}
+                className="justify-content-end ms-auto"
+                id="basic-nav-dropdown "
+              >
+                <NavDropdown.Item as={NavLink} to="/login">
+                  Login
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/register">
+                  Register
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-

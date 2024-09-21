@@ -2,13 +2,13 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 export default function AppCard({ productProp }) {
-  const { _id, name, description, price } = productProp;
+  const { _id, name, description, price, image } = productProp;
   return (
     <Link to={`/product/${_id}`}>
       <Card
         className="card rounded-0"
         style={{
-          backgroundImage: "url(/CarouselImages/carousel-1.jpg)",
+          backgroundImage: `url(${image})`,
         }}
       >
         <Card.Body className="position-absolute bottom-0 text-white">

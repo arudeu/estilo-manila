@@ -52,7 +52,7 @@ code {
   color: black !important;
   border-radius: 10px !important;
 }
-.nav-link:hover, .dropdown-item:hover{
+.nav-link:hover, .dropdown-item:hover, nav-link:active, .dropdown-item:active{
   background-color: black !important;
   color: white !important;
   transition: all 0.3s;
