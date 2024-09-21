@@ -97,6 +97,7 @@ code {
 .card-text{
   font-size: 1.3rem !important;
 }
+
 .footer{
   border-top: 1px solid black;
   margin-top: 10px;
@@ -117,7 +118,17 @@ code {
   bottom: 2rem;
   right: 2rem;
 }
-
+.quantity{
+  width: 4rem !important;
+  bottom: 2rem;
+  left: 2rem;
+  border-radius: none !important;
+  border: 1px solid black !important;
+}
+.quantity-label{
+  bottom: 4.5rem;
+  left: 2rem;
+}
 .carousel-inner .carousel-item > img {
   -webkit-animation: thing 20s;
   -o-animation: thing 20s;
