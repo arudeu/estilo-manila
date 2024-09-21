@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import AdminDashBoard from "./pages/AdminDashBoard"
 
 function App() {
   const [user, setUser] = useState({
@@ -33,6 +34,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/AdminDashBoard" element={<AdminDashBoard />} />
           </Routes>
           <Footer />
         </Router>
