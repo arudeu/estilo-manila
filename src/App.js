@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import ProductsView from "./pages/ProductsView";
 
 function App() {
   const [user, setUser] = useState({
@@ -30,9 +31,10 @@ function App() {
             {/* ROUTE HERE */}
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/product/:productId" element={<ProductsView />} />
           </Routes>
           <Footer />
         </Router>
