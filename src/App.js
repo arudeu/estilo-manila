@@ -11,7 +11,11 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+<<<<<<< HEAD
 import ProductsView from "./pages/ProductsView";
+=======
+import AdminDashBoard from "./pages/AdminDashBoard"
+>>>>>>> de82653a0c639b54b3d6ff7f0ababe3967a5b820
 
 function App() {
   const [user, setUser] = useState({
@@ -34,7 +38,11 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
+<<<<<<< HEAD
             <Route path="/product/:productId" element={<ProductsView />} />
+=======
+            <Route path="/AdminDashBoard" element={<AdminDashBoard />} />
+>>>>>>> de82653a0c639b54b3d6ff7f0ababe3967a5b820
           </Routes>
           <Footer />
         </Router>
