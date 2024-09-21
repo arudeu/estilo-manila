@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaRegUserCircle } from "react-icons/fa";
+import { RiShoppingBagLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
@@ -32,12 +34,27 @@ export default function NavigationBar() {
             </Nav.Link>
             {user.id !== null ? (
               <>
-                <Nav.Link as={NavLink} to="/profile" exact="true">
-                  Profile
+                <Form.Control type="text" placeholder="Search" />
+                <Nav.Link
+                  className="justify-content-end ms-auto"
+                  as={NavLink}
+                  to="/cart"
+                  exact="true"
+                >
+                  <RiShoppingBagLine id="user-icon" />
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/logout">
-                  Logout
-                </Nav.Link>
+                <NavDropdown
+                  title={<FaRegUserCircle id="user-icon" />}
+                  className="justify-content-end ms-auto"
+                  id="basic-nav-dropdown "
+                >
+                  <Nav.Link as={NavLink} to="/profile" exact="true">
+                    Profile
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/logout">
+                    Logout
+                  </Nav.Link>{" "}
+                </NavDropdown>
               </>
             ) : (
               <NavDropdown

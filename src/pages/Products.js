@@ -14,6 +14,7 @@ export default function Products() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+
         setProducts(data);
       });
   }, []);
@@ -30,6 +31,7 @@ export default function Products() {
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
         >
+          (
           {products.map((product) => {
             return (
               <SwiperSlide key={product._id}>
@@ -37,6 +39,7 @@ export default function Products() {
               </SwiperSlide>
             );
           })}
+          )?(<h1>No Products Found</h1>)
         </Swiper>
       </Row>
     </Container>

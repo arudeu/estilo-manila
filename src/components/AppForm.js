@@ -2,6 +2,7 @@ import { Container, Row, Col, InputGroup, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
+import { Navigate } from "react-router-dom";
 
 import UserContext from "../context/UserContext";
 
@@ -168,7 +169,7 @@ export default function AppForm() {
           <Form.Group as={Col} md="6" controlId="image">
             <Form.Label>Upload Avatar:</Form.Label>
             <Form.Control
-              type="file"
+              type="text"
               value={image}
               onChange={(e) => {
                 setImage(e.target.value);
