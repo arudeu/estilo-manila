@@ -2,6 +2,7 @@ import AppCarousel from "../components/AppCarousel";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import Products from "./Products";
+import SiteDescription from "../components/SiteDescription";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       >
         <AppCarousel />
         <Products />
+        <SiteDescription />
       </motion.div>
     </>
   );

@@ -36,7 +36,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/product/:productId" element={<ProductsView />} />
-            <Route path="/AdminDashBoard" element={<AdminDashBoard />} />
+            <Route path="/admin" element={<AdminDashBoard />} />
           </Routes>
           <Footer />
         </Router>

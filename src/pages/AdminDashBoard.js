@@ -1,5 +1,6 @@
-import AppDashBoard from "../components/AppDashBoard"
+import AppDashBoard from "../components/AppDashBoard";
 import { motion } from "framer-motion";
+import { Container } from "react-bootstrap";
 
 export default function DashBoard() {
   return (

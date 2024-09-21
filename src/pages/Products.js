@@ -3,6 +3,7 @@ import AppCard from "../components/Card";
 import { Navigation } from "swiper/modules";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PreviewProducts from "../components/PreviewProducts";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,9 +14,32 @@ export default function Products() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        const numbers = [];
+        const featured = [];
 
-        setProducts(data);
+        const generateRandomNums = () => {
+          let randomNum = Math.floor(Math.random() * data.length);
+
+          if (numbers.indexOf(randomNum) === -1) {
+            numbers.push(randomNum);
+          } else {
+            generateRandomNums();
+          }
+        };
+
+        for (let i = 0; i < 3; i++) {
+          generateRandomNums();
+
+          featured.push(
+            <SwiperSlide>
+              <PreviewProducts
+                data={data[numbers[i]]}
+                key={data[numbers[i]]._id}
+              />
+            </SwiperSlide>
+          );
+        }
+        setProducts(featured);
       });
   }, []);
   return (
@@ -31,15 +55,7 @@ export default function Products() {
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
         >
-          (
-          {products.map((product) => {
-            return (
-              <SwiperSlide key={product._id}>
-                <AppCard productProp={product} />
-              </SwiperSlide>
-            );
-          })}
-          )?(<h1>No Products Found</h1>)
+          {products}
         </Swiper>
       </Row>
     </Container>
