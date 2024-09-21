@@ -109,6 +109,14 @@ code {
 .footer-list{
   list-style: none;
 }
+.product-details{
+  border: 1px solid black;
+  min-height: 30rem !important;
+}
+.add-to-cart{
+  bottom: 2rem;
+  right: 2rem;
+}
 
 .carousel-inner .carousel-item > img {
   -webkit-animation: thing 20s;
