@@ -82,7 +82,11 @@ function Login() {
   }, [email, password]);
 
   return user.id !== null ? (
-    <Navigate to="/" />
+    user.isAdmin ? (
+      <Navigate to="/admin" />
+    ) : (
+      <Navigate to="/" />
+    )
   ) : (
     <Container className="my-5 py-5">
       <Row className="justify-content-md-center py-5">
