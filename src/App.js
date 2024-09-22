@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import ProductsView from "./pages/ProductsView";
 import AdminDashBoard from "./pages/AdminDashBoard";
+import ProductSearch from "./pages/ProductSearch";
 
 function App() {
   const [user, setUser] = useState({
@@ -36,6 +37,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/product/:productId" element={<ProductsView />} />
+            <Route path="/product" element={<ProductSearch />} />
             <Route path="/admin" element={<AdminDashBoard />} />
           </Routes>
           <Footer />

@@ -76,6 +76,7 @@ code {
 .card:hover{
   cursor: pointer;
   transform: scale(1.03);
+  z-index: 1;
 }
 .card-product {
   min-height: 40rem !important;

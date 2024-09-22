@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
@@ -8,9 +8,42 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import UserContext from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import AppCard from "./Card";
+import { Notyf } from "notyf";
 
 export default function NavigationBar() {
   const { user } = useContext(UserContext);
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const notyf = new Notyf();
+
+  function fetchProducts(e) {
+    navigate("/product");
+    setSearch(e);
+    fetch(
+      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/search-by-name",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: search }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        console.log(data);
+        if (!data) {
+          return notyf.error(data.message);
+        }
+      })
+      .catch((err) => {
+        return notyf.error(err);
+      });
+  }
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -29,12 +62,18 @@ export default function NavigationBar() {
             <Nav.Link as={NavLink} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/products">
+            <Nav.Link as={NavLink} to="/product">
               Products
             </Nav.Link>
             {user.id !== null ? (
               <>
-                <Form.Control type="text" placeholder="Search" />
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  value={search}
+                  onChange={(e) => fetchProducts(e.target.value)}
+                  result={products}
+                />
                 <Nav.Link
                   className="justify-content-end ms-auto"
                   as={NavLink}

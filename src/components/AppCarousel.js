@@ -29,9 +29,9 @@ export default function AppCarousel() {
     <Carousel>
       <Carousel.Item interval={5000}>
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 1, opacity: 0 }}
           animate={{ scale: 1.2, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
+          exit={{ scale: 1, opacity: 0 }}
           transition={{ duration: 5 }}
         >
           <Image src={carouselData[0].image} fluid />
