@@ -1,5 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
+import { motion } from "framer-motion";
 
 export default function AppCarousel() {
   const carouselData = [
@@ -27,21 +28,42 @@ export default function AppCarousel() {
   return (
     <Carousel>
       <Carousel.Item interval={5000}>
-        <Image src={carouselData[0].image} fluid />
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1.2, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 5 }}
+        >
+          <Image src={carouselData[0].image} fluid />
+        </motion.div>
         <Carousel.Caption>
           <h1 className="fw-bolder">{carouselData[0].header}</h1>
           <p>{carouselData[0].description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
-        <Image src={carouselData[1].image} fluid />
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1.2, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 5 }}
+        >
+          <Image src={carouselData[1].image} fluid />
+        </motion.div>
         <Carousel.Caption>
           <h1 className="fw-bolder">{carouselData[1].header}</h1>
           <p>{carouselData[1].description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
-        <Image src={carouselData[2].image} fluid />
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1.2, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 5 }}
+        >
+          <Image src={carouselData[2].image} fluid />
+        </motion.div>
         <Carousel.Caption>
           <h1 className="fw-bolder">{carouselData[2].header}</h1>
           <p>{carouselData[2].description}</p>

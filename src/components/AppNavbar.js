@@ -51,6 +51,13 @@ export default function NavigationBar() {
                   <Nav.Link as={NavLink} to="/profile" exact="true">
                     Profile
                   </Nav.Link>
+                  {user.isAdmin === true ? (
+                    <Nav.Link as={NavLink} to="/admin" exact="true">
+                      Admin
+                    </Nav.Link>
+                  ) : (
+                    ""
+                  )}
                   <Nav.Link as={NavLink} to="/logout">
                     Logout
                   </Nav.Link>{" "}
