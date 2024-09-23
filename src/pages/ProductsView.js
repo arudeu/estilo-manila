@@ -70,6 +70,7 @@ export default function ProductsView() {
                   className="position-absolute quantity"
                   defaultValue={1}
                   min={1}
+                  pattern={[0 - 9]}s
                 />
                 <Button className="btn btn-dark position-absolute add-to-cart">
                   Add To Cart

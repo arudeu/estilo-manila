@@ -7,7 +7,7 @@ export default function AppCarousel() {
     {
       header: "Own the Streets",
       description:
-        "Bold, Filipino-inspired streetwear that lets you stand out and repyour roots.",
+        "Bold, Filipino-inspired streetwear that lets you stand out and rep your roots.",
       image: "/CarouselImages/carousel-1.jpg",
     },
     {

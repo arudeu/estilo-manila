@@ -1,9 +1,46 @@
 import { Card, Col, Row, Container } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import AppCard from "../components/Card";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-export default function ProductSearch({ result }) {
-  const [products, setProducts] = useState([]);
+import { Notyf } from "notyf";
 
+export default function ProductSearch() {
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  const notyf = new Notyf();
+
+  function fetchProducts(e) {
+    e.preventDefault();
+
+    fetch(
+      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/search-by-name",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: search,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (
+          data.message === "Invalid product name" ||
+          data.message === "No products found"
+        ) {
+          notyf.error("No products found");
+        }
+        setResults(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
   useEffect(() => {
     fetch(
       "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/active"
@@ -19,16 +56,41 @@ export default function ProductSearch({ result }) {
       <Row className="mt-5 mb-3">
         <Col>
           <h1 className="fw-bolder">Products</h1>
+          <Form onKeyUp={(e) => fetchProducts(e)}>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              defaultValue=""
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </Form>
         </Col>
       </Row>
       <Row className="d-flex">
-        {products.map((product) => {
-          return (
-            <Col className="px-0 mx-auto flex-fill" md={4} key={product._id}>
-              <AppCard productProp={product} />
-            </Col>
-          );
-        })}
+        {results.length > 0
+          ? results.map((product) => {
+              return (
+                <Col
+                  className="px-0 mx-auto flex-fill"
+                  md={4}
+                  key={product._id}
+                >
+                  <AppCard productProp={product} />
+                </Col>
+              );
+            })
+          : products.map((product) => {
+              return (
+                <Col
+                  className="px-0 mx-auto flex-fill"
+                  md={4}
+                  key={product._id}
+                >
+                  <AppCard productProp={product} />
+                </Col>
+              );
+            })}
       </Row>
     </Container>
   );

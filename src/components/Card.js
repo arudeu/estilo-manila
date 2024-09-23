@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,18 @@ export default function AppCard({ productProp }) {
       >
         <Card.Body className="position-absolute bottom-0 text-white">
           <Card.Title className=" fw-bolder">{name}</Card.Title>
-          <Card.Text>&#x20B1;{price}</Card.Text>
+          <Card.Footer>
+            <Row>
+              <Col className="ps-0">
+                <Card.Text>&#x20B1;{price}</Card.Text>
+              </Col>
+              <Col className="pe-0">
+                <Link className="text-white" to={`/product/${_id}`}>
+                  <Card.Text className="text-end">Details</Card.Text>
+                </Link>
+              </Col>
+            </Row>
+          </Card.Footer>
         </Card.Body>
       </Card>
     </Link>

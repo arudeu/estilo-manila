@@ -14,36 +14,6 @@ import { Notyf } from "notyf";
 
 export default function NavigationBar() {
   const { user } = useContext(UserContext);
-  const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
-  const navigate = useNavigate();
-  const notyf = new Notyf();
-
-  function fetchProducts(e) {
-    navigate("/product");
-    setSearch(e);
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/search-by-name",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: search }),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        console.log(data);
-        if (!data) {
-          return notyf.error(data.message);
-        }
-      })
-      .catch((err) => {
-        return notyf.error(err);
-      });
-  }
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -66,25 +36,12 @@ export default function NavigationBar() {
               Products
             </Nav.Link>
             {user.id !== null ? (
-              <>
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  value={search}
-                  onChange={(e) => fetchProducts(e.target.value)}
-                  result={products}
-                />
-                <Nav.Link
-                  className="justify-content-end ms-auto"
-                  as={NavLink}
-                  to="/cart"
-                  exact="true"
-                >
+              <div className="d-flex justify-content-end ms-auto">
+                <Nav.Link as={NavLink} to="/cart" exact="true">
                   <RiShoppingBagLine id="user-icon" />
                 </Nav.Link>
                 <NavDropdown
                   title={<FaRegUserCircle id="user-icon" />}
-                  className="justify-content-end ms-auto"
                   id="basic-nav-dropdown "
                 >
                   <Nav.Link as={NavLink} to="/profile" exact="true">
@@ -101,7 +58,7 @@ export default function NavigationBar() {
                     Logout
                   </Nav.Link>{" "}
                 </NavDropdown>
-              </>
+              </div>
             ) : (
               <NavDropdown
                 title={<FaRegUserCircle id="user-icon" />}

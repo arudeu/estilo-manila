@@ -21,8 +21,8 @@ import AddProductModal from "./AddProductModal";
 
 function AppDashBoard() {
   const [products, setProducts] = useState([]);
-  const { user, setUser } = useContext(UserContext);
-  const [modal, setModal] = useState(false);
+  const { user } = useContext(UserContext);
+  const [availability, setAvailability] = useState(false);
   const navigate = useNavigate();
 
   const notyf = new Notyf();
@@ -73,6 +73,17 @@ function AppDashBoard() {
     );
     console.log(updatedProducts);
     setProducts(updatedProducts);
+  }
+
+  function handleAvailabilty(id) {
+    if(availability)
+    fetch(
+      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/activate`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(availability);
+      });
   }
 
   function fetchProducts() {
@@ -188,10 +199,14 @@ function AppDashBoard() {
                       />
                     </td>
                     <td className="text-center">
-                      <Form.Check
-                        type="switch"
-                        defaultChecked={product.isActive}
-                      />
+                      <Form onChange={() => handleAvailabilty(product._id)}>
+                        <Form.Check
+                          type="switch"
+                          defaultChecked={product.isActive}
+                          value={availability}
+                          onChange={(e) => setAvailability(e.target.value)}
+                        />
+                      </Form>
                     </td>
                     <td>
                       <div className="d-flex buttons">
