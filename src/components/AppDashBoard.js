@@ -22,7 +22,12 @@ import AddProductModal from "./AddProductModal";
 function AppDashBoard() {
   const [products, setProducts] = useState([]);
   const { user } = useContext(UserContext);
-  const [availability, setAvailability] = useState(false);
+  const [availability, setAvailability] = useState(
+    products.reduce((isActive, switchObj) => {
+      isActive = switchObj.defaultChecked;
+      return isActive;
+    }, {})
+  );
   const navigate = useNavigate();
 
   const notyf = new Notyf();
@@ -35,8 +40,6 @@ function AppDashBoard() {
   async function handleUpdate(e, id) {
     e.preventDefault();
     const updatedProduct = products.find((product) => product._id === id);
-    console.log(updatedProduct);
-    console.log(id);
     await fetch(
       `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/update`,
       {
@@ -75,16 +78,53 @@ function AppDashBoard() {
     setProducts(updatedProducts);
   }
 
-  function handleAvailabilty(id) {
-    if(availability)
-    fetch(
-      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/activate`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(availability);
-      });
-  }
+  const handleSwitchChange = (id) => (event) => {
+    const newValue = event.target.checked;
+    setAvailability({
+      isActive: newValue,
+    });
+
+    const updatedProduct = products.find((product) => product._id === id);
+    console.log(availability);
+    if (availability.isActive === false) {
+      fetch(
+        `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/activate`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(updatedProduct),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          notyf.success(`Product has been activated!`);
+        });
+    } else {
+      fetch(
+        `
+        http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/archive`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(updatedProduct),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          notyf.success(`Product has been archived!`);
+        });
+    }
+  };
+
+  async function handleAvailabilty(e, id) {}
 
   function fetchProducts() {
     fetch(
@@ -199,12 +239,13 @@ function AppDashBoard() {
                       />
                     </td>
                     <td className="text-center">
-                      <Form onChange={() => handleAvailabilty(product._id)}>
+                      <Form>
                         <Form.Check
                           type="switch"
+                          id={`custom-switch-${product._id}`}
                           defaultChecked={product.isActive}
-                          value={availability}
-                          onChange={(e) => setAvailability(e.target.value)}
+                          checked={availability[product._id]}
+                          onChange={handleSwitchChange(product._id)}
                         />
                       </Form>
                     </td>
