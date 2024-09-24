@@ -13,19 +13,19 @@
 ## Features:
 ## Features by Marc Aldous Conde
 - Front-End Development
-- Home Page
-- Products Page
-- Product View Page
+  - Home Page
+  - Products Page
+  - Product View Page
 - Back-End Development
-- Get Featured Products
-- Get All Active Products
-- Add Products
-- Update Products
-- Set Product Availability
-- Delete Products
+  - Get Featured Products
+  - Get All Active Products
+  - Add Products
+  - Update Products
+  - Set Product Availability
+  - Delete Products
 ## Features by Dan Leoncito
 - Front-End Development
-- Admin Page
-- Register Page
-- Login Page
-- Cart Page
+  - Admin Page
+  - Register Page
+  - Login Page
+  - Cart Page
