@@ -50,6 +50,9 @@ export default function ProductSearch() {
         setProducts(data);
       });
   });
+  const sortProducts = [...products].sort(
+    (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
+  );
 
   return (
     <Container className="my-5">
@@ -80,7 +83,7 @@ export default function ProductSearch() {
                 </Col>
               );
             })
-          : products.map((product) => {
+          : sortProducts.map((product) => {
               return (
                 <Col
                   className="px-0 mx-auto flex-fill"

@@ -124,8 +124,6 @@ function AppDashBoard() {
     }
   };
 
-  async function handleAvailabilty(e, id) {}
-
   function fetchProducts() {
     fetch(
       "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/all",
@@ -142,6 +140,10 @@ function AppDashBoard() {
       })
       .catch((err) => console.error("Failed to fetch products:", err));
   }
+
+  const sortProducts = [...products].sort(
+    (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
+  );
 
   useEffect(() => {
     fetchProducts();
@@ -189,7 +191,7 @@ function AppDashBoard() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => {
+              {sortProducts.map((product) => {
                 return (
                   <tr key={product._id}>
                     <td>
@@ -197,7 +199,6 @@ function AppDashBoard() {
                         src={product.image}
                         width={70}
                         height={70}
-                        fluid
                         roundedCircle
                         onClick={() => {
                           navigate(`/product/${product._id}`);
@@ -208,6 +209,7 @@ function AppDashBoard() {
                       <FormControl
                         type="text"
                         name="name"
+                        className="fw-bold"
                         value={product.name}
                         onChange={(e) => handleChange(product._id, e)}
                       />
