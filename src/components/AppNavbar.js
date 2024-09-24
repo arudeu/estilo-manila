@@ -13,9 +13,10 @@ import { Badge } from "react-bootstrap";
 export default function NavigationBar() {
   const { user } = useContext(UserContext);
   const [cartNumber, setCartNumber] = useState(0);
-  useEffect(() => {
+
+  async function getNumberCart() {
     if (user.id !== null) {
-      fetch(
+      await fetch(
         "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart",
         {
           headers: {
@@ -28,6 +29,10 @@ export default function NavigationBar() {
           setCartNumber(data.cartItems.length);
         });
     }
+  }
+
+  useEffect(() => {
+    getNumberCart();
   });
 
   return (

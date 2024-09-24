@@ -1,17 +1,8 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  FormControl,
-  InputGroup,
-} from "react-bootstrap";
+import { Container, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import { Navigate } from "react-router-dom";
 import { CiTrash } from "react-icons/ci";
 import Image from "react-bootstrap/Image";
 import { FaCheck } from "react-icons/fa6";

@@ -1,67 +1,108 @@
-import Table from 'react-bootstrap/Table';
-import React, { useState } from 'react';
-import { Button, InputGroup, FormControl } from 'react-bootstrap';
-import QuantitySelector from "./QuantitySelector"
+import Table from "react-bootstrap/Table";
+import React, { useEffect, useState } from "react";
+import { Button, InputGroup, FormControl } from "react-bootstrap";
+import QuantitySelector from "./QuantitySelector";
 import Image from "react-bootstrap/Image";
-import Col from 'react-bootstrap/Col';
+import { CiTrash } from "react-icons/ci";
+import { Container, Row, Col } from "react-bootstrap";
 
-function AppCart() {
+// http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart
+
+export default function AppCart() {
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  function fetchCart() {
+    fetch(
+      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart",
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setCart(data.cartItems);
+        setTotalPrice(data.totalPrice);
+      });
+  }
+
+  useEffect(() => {
+    fetchCart();
+  });
   return (
-    <Table striped bordered hover className="container mt-5">
-      <thead>
-        <tr>
-          <th colSpan={5}>RED DRAGON ANVIL STEREO GAMING SPEAKER</th>
-        </tr>
-        <tr>
-          <th>Image</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Subtotal</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <Image 
-              src="../../Logo/estilo-manila.png" 
-              fluid
-              width={150}
-              height={150}
-            />
-          </td>
-          <td>
-            The Reddragon GS520 ANVIL 2 x 3W RGB PC Speakers is a great way to add some sound to your PC or laptop. 
-            It features a sleek design with RGB lighting, 2 x 3W speakers, and USB and 3.5mm connectors.
-            <div>
-              <span>Quantity:</span>
-              <QuantitySelector />
-            </div>
-          </td>
-          <td id="price">2391</td>
-          <td id="subtotal">2391</td>
-          <td>
-            <Button variant="outline-danger">Remove</Button>
-          </td>
-        </tr>
-        <tr>
-          <td colSpan={2}>
-            <Button variant="outline-success">Checkout</Button>
-          </td>
-          <td colspan={3}>
-            <h3>TOTAL:</h3>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colSpan={5}>
-            <Button variant="outline-danger" className="m-2">Clear Cart</Button>
-          </td>
-        </tr>
-      </tfoot>
-    </Table>
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="mt-5 fw-bolder">Shopping Cart</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Table className="container mt-5">
+          {cart.map((crt) => {
+            return (
+              <>
+                <thead>
+                  <tr>
+                    <th colSpan={2}>{crt.productId.name}</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <Image
+                        src={crt.productId.image}
+                        width={130}
+                        height={130}
+                        roundedCircle
+                      />
+                    </td>
+                    <td>
+                      <p className="cart-description">
+                        {crt.productId.description}
+                      </p>
+                      <div className="mt-3">
+                        <span>Quantity:</span>
+                        <QuantitySelector propsValue={crt.quantity} />
+                      </div>
+                    </td>
+                    <td id="price">&#x20B1;{crt.productId.price}</td>
+                    <td id="subtotal">&#x20B1;{crt.subtotal}</td>
+                    <td>
+                      <Button
+                        variant="light"
+                        className="btn btn-outline-danger mx-2"
+                      >
+                        <CiTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                </tbody>
+              </>
+            );
+          })}
+
+          <tfoot>
+            <tr>
+              <td colSpan={3}>
+                <h3 className="fw-bolder">TOTAL: &#x20B1;{totalPrice}</h3>
+              </td>
+              <td>
+                <Button variant="outline-danger" className="m-2">
+                  Clear
+                </Button>
+              </td>
+              <td>
+                <Button variant="outline-dark">Checkout</Button>
+              </td>
+            </tr>
+          </tfoot>
+        </Table>
+      </Row>
+    </Container>
   );
 }
-
-export default AppCart;

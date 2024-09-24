@@ -162,6 +162,10 @@ code {
 .details:nth-child(1), .details:nth-child(2), .details:nth-child(3){
   border-right: none !important;
 }
+.active {
+  background: none !important;
+  color: black !important;
+}
 table .form-control, table .form-select, table .input-group-text{
   border: none !important;
   background: none !important;
@@ -175,4 +179,13 @@ table .form-check-input:checked{
 }
 table {
   background: none !important;
+}
+.cart-description{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  line-clamp: 2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 53vw;
 }
