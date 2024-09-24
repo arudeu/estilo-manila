@@ -8,12 +8,27 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
-import AppCard from "./Card";
-import { Notyf } from "notyf";
+import { Badge } from "react-bootstrap";
 
 export default function NavigationBar() {
   const { user } = useContext(UserContext);
+  const [cartNumber, setCartNumber] = useState(0);
+  useEffect(() => {
+    if (user.id !== null) {
+      fetch(
+        "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setCartNumber(data.cartItems.length);
+        });
+    }
+  });
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -38,7 +53,12 @@ export default function NavigationBar() {
             {user.id !== null ? (
               <div className="d-flex justify-content-end ms-auto">
                 <Nav.Link as={NavLink} to="/cart" exact="true">
-                  <RiShoppingBagLine id="user-icon" />
+                  <RiShoppingBagLine className="me-1" id="user-icon" />
+                  <sup>
+                    <Badge pill bg="dark">
+                      {cartNumber}
+                    </Badge>
+                  </sup>
                 </Nav.Link>
                 <NavDropdown
                   title={<FaRegUserCircle id="user-icon" />}

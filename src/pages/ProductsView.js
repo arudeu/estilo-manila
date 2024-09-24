@@ -14,6 +14,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { Notyf } from "notyf";
 
 export default function ProductsView() {
   const { user } = useContext(UserContext);
@@ -21,7 +22,36 @@ export default function ProductsView() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
+  const notyf = new Notyf();
+
+  function addToCart(e) {
+    e.preventDefault();
+    fetch(
+      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/add-to-cart",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          productId: productId,
+          quantity: quantity,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        notyf.success("Added To Cart Successfully!");
+        console.log(data);
+      });
+  }
+
+  function handleKeyDown(e) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
     fetch(
@@ -61,18 +91,23 @@ export default function ProductsView() {
             <h2>&#x20B1;{price}</h2>
             <p>{description}</p>
             {user.id !== null ? (
-              <Form>
+              <Form onSubmit={addToCart}>
                 <Form.Label className="position-absolute quantity-label">
                   Quantity
                 </Form.Label>
                 <FormControl
                   type="number"
                   className="position-absolute quantity"
-                  defaultValue={1}
+                  value={quantity}
                   min={1}
-                  pattern={[0 - 9]}s
+                  pattern="[0-9]"
+                  onKeyDown={handleKeyDown}
+                  onChange={(e) => setQuantity(e.target.value)}
                 />
-                <Button className="btn btn-dark position-absolute add-to-cart">
+                <Button
+                  type="submit"
+                  className="btn btn-dark position-absolute add-to-cart"
+                >
                   Add To Cart
                 </Button>
               </Form>

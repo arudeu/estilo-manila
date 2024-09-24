@@ -44,23 +44,29 @@ code {
   font-size: 1.5rem;
 }
 .navbar {
-  font-size: 1.2rem !important;
+  font-size: 1rem !important;
+  font-weight: 600;
   border-bottom: 1px solid black;
 }
 .nav-link, .dropdown-item{
-  padding-right: 1.2rem !important;
-  padding-left: 1.2rem !important;
-  color: black !important;
-  border-radius: 10px !important;
+  padding-right: .7rem !important;
+  padding-left: .7rem !important;
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  margin: 0 0.5rem;
+  color: rgb(107, 107, 107) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
 }
 .nav-link:hover, .dropdown-item:hover, nav-link:active, .dropdown-item:active{
-  background-color: black !important;
-  color: white !important;
-  transition: all 0.3s;
+  color: black !important;
+  background: none !important;
 }
 .dropdown-menu{
   background: white !important;
-  border: none !important;
+  border: 1px solid black !important;
+  border-radius: 0 !important;
   padding-left: 0.7rem !important;
   padding-right: 0.7rem !important;
   font-size: 1.2rem !important;
