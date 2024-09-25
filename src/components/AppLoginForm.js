@@ -15,19 +15,16 @@ function Login() {
   function authenticate(e) {
     // Prevents page redirection via form submission
     e.preventDefault();
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -53,14 +50,11 @@ function Login() {
   }
 
   function retrieveUserDetails(token) {
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/users/details",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/users/details`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

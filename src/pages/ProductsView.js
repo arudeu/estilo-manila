@@ -28,20 +28,17 @@ export default function ProductsView() {
 
   function addToCart(e) {
     e.preventDefault();
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/add-to-cart",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({
-          productId: productId,
-          quantity: quantity,
-        }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/add-to-cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        productId: productId,
+        quantity: quantity,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         notyf.success("Added To Cart Successfully!");
@@ -54,9 +51,7 @@ export default function ProductsView() {
   }
 
   useEffect(() => {
-    fetch(
-      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${productId}`
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name);

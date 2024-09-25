@@ -8,8 +8,6 @@ import { TbMoodEmpty } from "react-icons/tb";
 import { Container, Row, Col } from "react-bootstrap";
 import { Notyf } from "notyf";
 
-// http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart
-
 export default function AppCart() {
   const [cart, setCart] = useState([]);
   const [prodId, setProdId] = useState("");
@@ -18,15 +16,12 @@ export default function AppCart() {
 
   function clearCart(e) {
     e.preventDefault();
-    fetch(
-      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/clear-cart`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/clear-cart`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -37,7 +32,7 @@ export default function AppCart() {
   function deleteItemFromCart(e) {
     e.preventDefault();
     fetch(
-      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/${prodId}/remove-from-cart`,
+      `${process.env.REACT_APP_API_BASE_URL}/cart/${prodId}/remove-from-cart`,
       {
         method: "PATCH",
         headers: {
@@ -56,14 +51,11 @@ export default function AppCart() {
       });
   }
   function fetchCart() {
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart",
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setCart(data.cartItems);

@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
 import { Navigate } from "react-router-dom";
 
-import UserContext from "../context/UserContext";
-
 export default function AppForm() {
   const notyf = new Notyf();
 
@@ -53,23 +51,20 @@ export default function AppForm() {
       e.preventDefault();
       e.stopPropagation();
     } else {
-      fetch(
-        "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/users/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            mobileNo: mobileNo,
-            image: image,
-            password: password,
-          }),
-        }
-      )
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          mobileNo: mobileNo,
+          image: image,
+          password: password,
+        }),
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

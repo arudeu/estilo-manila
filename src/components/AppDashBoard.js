@@ -31,17 +31,14 @@ function AppDashBoard() {
   async function handleUpdate(e, id) {
     e.preventDefault();
     const updatedProduct = products.find((product) => product._id === id);
-    await fetch(
-      `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/update`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(updatedProduct),
-      }
-    )
+    await fetch(`${process.env.REACT_APP_API_BASE_URL}/product/${id}/update`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(updatedProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         notyf.success(`Product updated successfully!`);
@@ -78,35 +75,28 @@ function AppDashBoard() {
     const updatedProduct = products.find((product) => product._id === id);
     console.log(availability);
     if (availability.isActive === false) {
-      fetch(
-        `http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/activate`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(updatedProduct),
-        }
-      )
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/product/${id}/activate`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updatedProduct),
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           notyf.success(`Product has been activated!`);
         });
     } else {
-      fetch(
-        `
-        http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/${id}/archive`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(updatedProduct),
-        }
-      )
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/product/${id}/archive`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updatedProduct),
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -116,14 +106,11 @@ function AppDashBoard() {
   };
 
   function fetchProducts() {
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/all",
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    )
+    fetch("${process.env.REACT_APP_API_BASE_URL}/product/all", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

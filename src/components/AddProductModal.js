@@ -24,17 +24,14 @@ export default function AddProductModal({ show, onHide, refresh }) {
   function addProduct(e) {
     e.preventDefault();
     const productDetails = { name, description, image, price };
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(productDetails),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(productDetails),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

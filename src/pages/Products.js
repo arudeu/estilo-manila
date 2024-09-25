@@ -9,9 +9,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/active"
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product/active`)
       .then((res) => res.json())
       .then((data) => {
         const numbers = [];

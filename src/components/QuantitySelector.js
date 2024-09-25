@@ -10,20 +10,17 @@ export default function QuantitySelector({ propsValue, productId }) {
 
   function addToCart(e) {
     e.preventDefault();
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/update-cart-quantity",
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({
-          productId: id,
-          quantity: quantity,
-        }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/update-cart-quantity`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        productId: id,
+        quantity: quantity,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         notyf.success("Updated Cart Successfully!");

@@ -15,18 +15,15 @@ export default function ProductSearch() {
   function fetchProducts(e) {
     e.preventDefault();
 
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/search-by-name",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: search,
-        }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product/search-by-name`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: search,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -43,9 +40,7 @@ export default function ProductSearch() {
       });
   }
   useEffect(() => {
-    fetch(
-      "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/product/active"
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product/active`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

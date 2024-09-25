@@ -16,14 +16,11 @@ export default function NavigationBar() {
 
   async function getNumberCart() {
     if (user.id !== null) {
-      await fetch(
-        "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b4/cart/get-cart",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      await fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setCartNumber(data.cartItems.length);
