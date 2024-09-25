@@ -106,7 +106,7 @@ function AppDashBoard() {
   };
 
   function fetchProducts() {
-    fetch("${process.env.REACT_APP_API_BASE_URL}/product/all", {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/product/all`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
