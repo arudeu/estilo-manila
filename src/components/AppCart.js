@@ -67,7 +67,10 @@ export default function AppCart() {
                       </p>
                       <div className="mt-3">
                         <span>Quantity:</span>
-                        <QuantitySelector propsValue={crt.quantity} />
+                        <QuantitySelector
+                          propsValue={crt.quantity}
+                          productId={crt.productId._id}
+                        />
                       </div>
                     </td>
                     <td id="price">&#x20B1;{crt.productId.price}</td>
