@@ -16,6 +16,7 @@ import AdminDashBoard from "./pages/AdminDashBoard";
 import ProductSearch from "./pages/ProductSearch";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const [user, setUser] = useState({
@@ -43,6 +44,7 @@ function App() {
             <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/checkout" element={<Checkout/>} />
           </Routes>
           <Footer />
         </Router>
