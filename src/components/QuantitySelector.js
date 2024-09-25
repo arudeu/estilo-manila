@@ -26,7 +26,7 @@ export default function QuantitySelector({ propsValue, productId }) {
     )
       .then((res) => res.json())
       .then((data) => {
-        notyf.success("Added To Cart Successfully!");
+        notyf.success("Updated Cart Successfully!");
         console.log(data);
       });
   }
