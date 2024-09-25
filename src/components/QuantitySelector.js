@@ -16,8 +16,7 @@ export default function QuantitySelector({ propsValue }) {
       </Button>
       <FormControl
         type="number"
-        defaultValue={propsValue}
-        value={quantity}
+        value={propsValue}
         onChange={(e) => setQuantity(Number(e.target.value))}
         min="1"
       />

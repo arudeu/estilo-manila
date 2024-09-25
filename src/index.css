@@ -189,3 +189,7 @@ table {
   text-overflow: ellipsis !important;
   width: 53vw;
 }
+.profile-card{
+  background: url("/public/SiteImages/profile-card.jpg") !important;
+  background-size: cover !important;
+}

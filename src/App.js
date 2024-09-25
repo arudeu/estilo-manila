@@ -15,6 +15,7 @@ import ProductsView from "./pages/ProductsView";
 import AdminDashBoard from "./pages/AdminDashBoard";
 import ProductSearch from "./pages/ProductSearch";
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
 
 function App() {
   const [user, setUser] = useState({
@@ -41,6 +42,7 @@ function App() {
             <Route path="/product" element={<ProductSearch />} />
             <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
         </Router>
