@@ -190,6 +190,19 @@ table {
   width: 53vw;
 }
 .profile-card{
-  background: url("/public/SiteImages/profile-card.jpg") !important;
+  width: 30vw;
+  border-radius: 15px;
   background-size: cover !important;
+  border: 15px #e5e5e5 solid;
+  background: linear-gradient(#333, #242d34);
+  box-shadow: 4px 0px 58px -3px rgba(0,0,0,0.89);
+  -webkit-box-shadow: 4px 0px 58px -3px rgba(0,0,0,0.89);
+  -moz-box-shadow: 4px 0px 58px -3px rgba(0,0,0,0.89);
+}
+.profile-card:hover{
+  cursor: pointer;
+}
+.profile-image{
+  border-radius: 15px;
+  border: 5px #e5e5e5 solid;
 }
