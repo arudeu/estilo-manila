@@ -44,7 +44,7 @@ function App() {
             <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/checkout" element={<Checkout/>} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </Router>
@@ -52,5 +52,5 @@ function App() {
     </>
   );
 }
-
+// TEST
 export default App;
