@@ -10,7 +10,7 @@ function Login() {
   const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [setIsActive] = useState(true);
+  // const [isActive, setIsActive] = useState(true);
 
   function authenticate(e) {
     // Prevents page redirection via form submission
@@ -67,13 +67,13 @@ function Login() {
       });
   }
 
-  useEffect(() => {
-    if (email !== "" && password !== "") {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  }, [email, password]);
+  // useEffect(() => {
+  //   if (email !== "" && password !== "") {
+  //     setIsActive(true);
+  //   } else {
+  //     setIsActive(false);
+  //   }
+  // }, [email, password]);
 
   return user.id !== null ? (
     user.isAdmin ? (

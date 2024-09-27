@@ -8,19 +8,19 @@ export default function AppCarousel() {
       header: "Own the Streets",
       description:
         "Bold, Filipino-inspired streetwear that lets you stand out and rep your roots.",
-      image: "/CarouselImages/carousel-1.jpg",
+      image: "/CarouselImages/carousel-1.jpg"
     },
     {
       header: "Manila Vibes, Global Style",
       description:
         "Authentic streetwear inspired by Manilas culture, wherever you are.",
-      image: "/CarouselImages/carousel-2.jpg",
+      image: "/CarouselImages/carousel-2.jpg"
     },
     {
       header: "Filipino Pride, Street Cool",
       description:
         "Street style rooted in Filipino tradition. Fearless, creative, and proud.",
-      image: "/CarouselImages/carousel-3.jpg",
+      image: "/CarouselImages/carousel-3.jpg"
     },
     ,
   ];
