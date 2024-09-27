@@ -1,13 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Image } from "react-bootstrap";
-import {
-  Card,
-  CardText,
-  CardFooter,
-  CardTitle,
-  CardBody,
-} from "react-bootstrap";
+import { CardText, CardTitle, CardBody } from "react-bootstrap";
 import UserContext from "../context/UserContext";
 import { Navigate } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";

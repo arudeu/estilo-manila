@@ -13,7 +13,7 @@ export default function AppCarousel() {
     {
       header: "Manila Vibes, Global Style",
       description:
-        "Authentic streetwear inspired by Manila’s culture, wherever you are.",
+        "Authentic streetwear inspired by Manilas culture, wherever you are.",
       image: "/CarouselImages/carousel-2.jpg",
     },
     {

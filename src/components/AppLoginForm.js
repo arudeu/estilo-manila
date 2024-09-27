@@ -10,7 +10,7 @@ function Login() {
   const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isActive, setIsActive] = useState(true);
+  const [setIsActive] = useState(true);
 
   function authenticate(e) {
     // Prevents page redirection via form submission
