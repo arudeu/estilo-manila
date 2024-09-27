@@ -22,7 +22,6 @@ export default function AppCarousel() {
         "Street style rooted in Filipino tradition. Fearless, creative, and proud.",
       image: "/CarouselImages/carousel-3.jpg"
     },
-    ,
   ];
 
   return (
