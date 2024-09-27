@@ -1,5 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
-import AppCard from "../components/Card";
+import { Container, Row } from "react-bootstrap";
 import { Navigation } from "swiper/modules";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";

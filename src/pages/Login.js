@@ -1,5 +1,4 @@
 import AppLoginForm from "../components/AppLoginForm";
-import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 
 export default function Login() {

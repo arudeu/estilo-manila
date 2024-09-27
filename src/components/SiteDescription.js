@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Image from "react-bootstrap/Image";
 import { CiGlobe } from "react-icons/ci";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { PiTShirtThin } from "react-icons/pi";

@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -37,6 +36,7 @@ export default function NavigationBar() {
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           <img
+            alt="logo-image"
             className="d-inline-block align-top"
             src="/Logo/estilo-manila.png"
             width={100}

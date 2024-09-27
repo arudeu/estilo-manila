@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 export default function AppCard({ productProp }) {
-  const { _id, name, description, price, image } = productProp;
+  const { _id, name, price, image } = productProp;
 
   return (
     <Link to={`/product/${_id}`}>

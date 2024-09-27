@@ -1,17 +1,5 @@
 import { useState } from "react";
-import {
-  Modal,
-  Button,
-  ModalHeader,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Form,
-  Row,
-  Col,
-  FormControl,
-  InputGroup,
-} from "react-bootstrap";
+import { Modal, Button, Form, Row, Col, InputGroup } from "react-bootstrap";
 import { Notyf } from "notyf";
 
 export default function AddProductModal({ show, onHide, refresh }) {

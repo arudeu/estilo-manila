@@ -2,7 +2,6 @@ import { Container, Row, Col, InputGroup, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
-import { Navigate } from "react-router-dom";
 
 export default function AppForm() {
   const notyf = new Notyf();
@@ -42,7 +41,16 @@ export default function AppForm() {
       setIsActive(false);
     }
     //array of dependencies, the effect/side-effect/function will run when there are changes with our state
-  }, [firstName, lastName, email, image, mobileNo, password, confirmPassword]);
+  }, [
+    firstName,
+    lastName,
+    email,
+    image,
+    mobileNo,
+    password,
+    confirmPassword,
+    isActive,
+  ]);
 
   function registerUser(e) {
     e.preventDefault();
@@ -149,7 +157,7 @@ export default function AppForm() {
               type="tel"
               placeholder="0912 345 6789"
               required
-              pattern="^\09[0-9]{10}$"
+              pattern="^\u9[0-9]{10}$"
               value={mobileNo}
               onChange={(e) => {
                 setMobileNo(e.target.value);

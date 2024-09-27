@@ -1,11 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <Container className="footer p-5 border-top-1" fluid>
       <Row className="px-5">
         <Col lg={6}>
           <img
+            alt="footer-logo"
             className="d-inline-block align-top mb-5"
             src="/Logo/estilo-manila.png"
             width={200}

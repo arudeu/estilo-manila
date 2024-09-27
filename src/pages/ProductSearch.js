@@ -1,7 +1,6 @@
-import { Card, Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import AppCard from "../components/Card";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Notyf } from "notyf";
 import { motion } from "framer-motion";

@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 import React, { useEffect, useState } from "react";
-import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import QuantitySelector from "./QuantitySelector";
 import Image from "react-bootstrap/Image";
 import { CiTrash } from "react-icons/ci";
