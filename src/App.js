@@ -30,6 +30,7 @@ function App() {
     <>
       <UserProvider value={{ user, setUser, unsetUser }}>
         <Router>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
           <NavigationBar />
           <Routes>
             {/* ROUTE HERE */}
