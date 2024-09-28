@@ -2,6 +2,7 @@ import { Container, Row, Col, InputGroup, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
+import { useNavigate } from "react-router-dom";
 
 export default function AppForm() {
   const notyf = new Notyf();
@@ -15,6 +16,7 @@ export default function AppForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
 
   console.log(firstName);
   console.log(lastName);
@@ -84,7 +86,7 @@ export default function AppForm() {
             setMobileNo("");
             setPassword("");
             setConfirmPassword("");
-
+            navigate("/login");
             notyf.success("Registration successful");
           }
         });

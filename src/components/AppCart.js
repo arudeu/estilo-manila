@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import QuantitySelector from "./QuantitySelector";
 import Image from "react-bootstrap/Image";
@@ -7,12 +8,37 @@ import { CiTrash } from "react-icons/ci";
 import { TbMoodEmpty } from "react-icons/tb";
 import { Container, Row, Col } from "react-bootstrap";
 import { Notyf } from "notyf";
+import UserContext from "../context/UserContext";
 
 export default function AppCart() {
   const [cart, setCart] = useState([]);
   const [prodId, setProdId] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const { userId } = useContext(UserContext);
   const notyf = new Notyf();
+  const navigate = useNavigate();
+
+  function checkoutOrder(e) {
+    e.preventDefault();
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/order/checkout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        userId: userId,
+        productsOrdered: cart,
+        totalPrice: totalPrice,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/profile");
+        notyf.success("Ordered successfully!");
+      });
+  }
 
   function clearCart(e) {
     e.preventDefault();
@@ -51,16 +77,20 @@ export default function AppCart() {
       });
   }
   function fetchCart() {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setCart(data.cartItems);
-        setTotalPrice(data.totalPrice);
-      });
+    console.log(cart);
+    if (typeof cart !== "undefined") {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setCart(data.cartItems);
+          setTotalPrice(data.totalPrice);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   useEffect(() => {
@@ -75,7 +105,7 @@ export default function AppCart() {
       </Row>
       <Row>
         <Table className="container mt-5">
-          {cart.length > 0 ? (
+          {typeof cart !== "undefined" ? (
             cart.map((crt) => {
               return (
                 <>
@@ -138,7 +168,7 @@ export default function AppCart() {
               </Row>
             </Container>
           )}
-          {cart.length > 0 ? (
+          {typeof cart !== "undefined" ? (
             <tfoot>
               <tr>
                 <td colSpan={3}>
@@ -156,7 +186,11 @@ export default function AppCart() {
                   </Form>
                 </td>
                 <td>
-                  <Button variant="outline-dark">Checkout</Button>
+                  <Form onSubmit={checkoutOrder}>
+                    <Button type="submit" variant="outline-dark">
+                      Checkout
+                    </Button>
+                  </Form>
                 </td>
               </tr>
             </tfoot>

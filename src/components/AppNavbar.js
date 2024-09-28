@@ -14,7 +14,7 @@ export default function NavigationBar() {
   const [cartNumber, setCartNumber] = useState(0);
 
   async function getNumberCart() {
-    if (user.id !== null) {
+    if (user.id !== null && !typeof cartNumber === "undefined") {
       await fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -58,7 +58,7 @@ export default function NavigationBar() {
                   <RiShoppingBagLine className="me-1" id="user-icon" />
                   <sup>
                     <Badge pill bg="dark">
-                      {cartNumber}
+                      {typeof cartNumber !== "undefined" ? cartNumber : 0}
                     </Badge>
                   </sup>
                 </Nav.Link>

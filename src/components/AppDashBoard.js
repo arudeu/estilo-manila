@@ -6,7 +6,7 @@ import UserContext from "../context/UserContext";
 import { CiTrash } from "react-icons/ci";
 import Image from "react-bootstrap/Image";
 import { FaCheck } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Notyf } from "notyf";
 import AddProductModal from "./AddProductModal";
 
@@ -151,7 +151,12 @@ function AppDashBoard() {
           >
             Add New Product
           </Button>{" "}
-          <Button variant="light" className="btn btn-outline-dark">
+          <Button
+            as={Link}
+            to="/admin/orders"
+            variant="light"
+            className="btn btn-outline-dark"
+          >
             Show User Orders
           </Button>{" "}
         </div>
