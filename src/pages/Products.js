@@ -1,7 +1,5 @@
 import { Container, Row } from "react-bootstrap";
-import { Navigation } from "swiper/modules";
 import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import PreviewProducts from "../components/PreviewProducts";
 
 export default function Products() {
@@ -28,12 +26,10 @@ export default function Products() {
           generateRandomNums();
 
           featured.push(
-            <SwiperSlide>
-              <PreviewProducts
-                data={data[numbers[i]]}
-                key={data[numbers[i]]._id}
-              />
-            </SwiperSlide>
+            <PreviewProducts
+              data={data[numbers[i]]}
+              key={data[numbers[i]]._id}
+            />
           );
         }
         setProducts(featured);
@@ -44,17 +40,7 @@ export default function Products() {
       <Row className="mb-2">
         <h1 className="fw-bolder">Featured Products</h1>
       </Row>
-      <Row>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={10}
-          slidesPerView={3}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-        >
-          {products}
-        </Swiper>
-      </Row>
+      <Row>{products}</Row>
     </Container>
   );
 }

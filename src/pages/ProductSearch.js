@@ -3,7 +3,6 @@ import { Form, FormControl } from "react-bootstrap";
 import AppCard from "../components/Card";
 import { useEffect, useState } from "react";
 import { Notyf } from "notyf";
-import { motion } from "framer-motion";
 
 export default function ProductSearch() {
   const [products, setProducts] = useState([]);
@@ -50,52 +49,46 @@ export default function ProductSearch() {
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Container className="my-5">
-        <Row className="mt-5 mb-3">
-          <Col>
-            <h1 className="fw-bolder">Products</h1>
-            <Form onKeyUp={(e) => fetchProducts(e)}>
-              <FormControl
-                type="text"
-                placeholder="Search"
-                defaultValue=""
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </Form>
-          </Col>
-        </Row>
-        <Row className="d-flex">
-          {results.length > 0
-            ? results.map((product) => {
-                return (
-                  <Col
-                    className="px-0 mx-auto flex-fill"
-                    md={4}
-                    key={product._id}
-                  >
-                    <AppCard productProp={product} />
-                  </Col>
-                );
-              })
-            : sortProducts.map((product) => {
-                return (
-                  <Col
-                    className="px-0 mx-auto flex-fill"
-                    md={4}
-                    key={product._id}
-                  >
-                    <AppCard productProp={product} />
-                  </Col>
-                );
-              })}
-        </Row>
-      </Container>
-    </motion.div>
+    <Container className="my-5">
+      <Row className="mt-5 mb-3">
+        <Col>
+          <h1 className="fw-bolder">Products</h1>
+          <Form onKeyUp={(e) => fetchProducts(e)}>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              defaultValue=""
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </Form>
+        </Col>
+      </Row>
+      <Row className="d-flex">
+        {results.length > 0
+          ? results.map((product) => {
+              return (
+                <Col
+                  className="px-0 mx-auto flex-fill"
+                  md={4}
+                  key={product._id}
+                >
+                  <AppCard productProp={product} />
+                </Col>
+              );
+            })
+          : sortProducts.map((product) => {
+              return (
+                <Col
+                  className="px-0 mx-auto flex-fill"
+                  md={4}
+                  key={product._id}
+                >
+                  <AppCard productProp={product} />
+                </Col>
+              );
+            })}
+      </Row>
+    </Container>
   );
 }
