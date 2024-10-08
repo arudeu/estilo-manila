@@ -206,3 +206,18 @@ table {
   border-radius: 15px;
   border: 5px #e5e5e5 solid;
 }
+.svg-icon {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #000;
+}
+
+.svg-icon circle {
+  stroke: #000;
+  stroke-width: 1;
+}

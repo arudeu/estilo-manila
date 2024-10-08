@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import PreviewProducts from "../components/PreviewProducts";
 
@@ -26,10 +26,12 @@ export default function Products() {
           generateRandomNums();
 
           featured.push(
-            <PreviewProducts
-              data={data[numbers[i]]}
-              key={data[numbers[i]]._id}
-            />
+            <Col>
+              <PreviewProducts
+                data={data[numbers[i]]}
+                key={data[numbers[i]]._id}
+              />
+            </Col>
           );
         }
         setProducts(featured);
