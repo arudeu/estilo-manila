@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { FaRegUserCircle } from "react-icons/fa";
-import { RiShoppingBagLine } from "react-icons/ri";
+// import { FaRegUserCircle } from "react-icons/fa";
+// import { RiShoppingBagLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { Badge } from "react-bootstrap";
@@ -55,7 +55,7 @@ export default function NavigationBar() {
             {user.id !== null ? (
               <div className="d-flex justify-content-end ms-auto">
                 <Nav.Link as={NavLink} to="/cart" exact="true">
-                  <RiShoppingBagLine className="me-1" id="user-icon" />
+                  {/*<RiShoppingBagLine className="me-1" id="user-icon" />*/}
                   <sup>
                     <Badge pill bg="dark">
                       {typeof cartNumber !== "undefined" ? cartNumber : 0}
@@ -63,7 +63,7 @@ export default function NavigationBar() {
                   </sup>
                 </Nav.Link>
                 <NavDropdown
-                  title={<FaRegUserCircle id="user-icon" />}
+                  // title={<FaRegUserCircle id="user-icon" />}
                   id="basic-nav-dropdown "
                 >
                   <Nav.Link as={NavLink} to="/profile" exact="true">
@@ -83,7 +83,7 @@ export default function NavigationBar() {
               </div>
             ) : (
               <NavDropdown
-                title={<FaRegUserCircle id="user-icon" />}
+                // title={<FaRegUserCircle id="user-icon" />}
                 className="justify-content-end ms-auto"
                 id="basic-nav-dropdown "
               >

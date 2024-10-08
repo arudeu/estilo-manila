@@ -3,9 +3,9 @@ import Button from "react-bootstrap/Button";
 import { Container, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../context/UserContext";
-import { CiTrash } from "react-icons/ci";
+// import { CiTrash } from "react-icons/ci";
 import Image from "react-bootstrap/Image";
-import { FaCheck } from "react-icons/fa6";
+// import { FaCheck } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { Notyf } from "notyf";
 import AddProductModal from "./AddProductModal";
@@ -241,13 +241,13 @@ function AppDashBoard() {
                           className="btn btn-outline-dark mx-2"
                           onClick={(e) => handleUpdate(e, product._id)}
                         >
-                          <FaCheck />
+                          {/*<FaCheck />*/}
                         </Button>{" "}
                         <Button
                           variant="light"
                           className="btn btn-outline-danger mx-2"
                         >
-                          <CiTrash />
+                          {/*<CiTrash />*/}
                         </Button>{" "}
                       </div>
                     </td>

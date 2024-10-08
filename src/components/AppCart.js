@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import QuantitySelector from "./QuantitySelector";
 import Image from "react-bootstrap/Image";
-import { CiTrash } from "react-icons/ci";
-import { TbMoodEmpty } from "react-icons/tb";
+// import { CiTrash } from "react-icons/ci";
+// import { TbMoodEmpty } from "react-icons/tb";
 import { Container, Row, Col } from "react-bootstrap";
 import { Notyf } from "notyf";
 import UserContext from "../context/UserContext";
@@ -149,7 +149,7 @@ export default function AppCart() {
                             className="btn btn-outline-danger mx-2"
                             onClick={(e) => setProdId(crt.productId._id)}
                           >
-                            <CiTrash />
+                            {/*<CiTrash />*/}
                           </Button>
                         </Form>
                       </td>
@@ -162,7 +162,7 @@ export default function AppCart() {
             <Container className="my-5 text-center py-5">
               <Row>
                 <h3 className="fw-bolder text-center py-5 my-5">
-                  <TbMoodEmpty className="fs-1" />
+                  {/*<TbMoodEmpty className="fs-1" />*/}
                   Cart Empty
                 </h3>
               </Row>

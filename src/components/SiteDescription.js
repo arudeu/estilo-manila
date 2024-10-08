@@ -1,8 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { CiGlobe } from "react-icons/ci";
-import { CiDeliveryTruck } from "react-icons/ci";
-import { PiTShirtThin } from "react-icons/pi";
-import { CiFlag1 } from "react-icons/ci";
+// import { CiGlobe } from "react-icons/ci";
+// import { CiDeliveryTruck } from "react-icons/ci";
+// import { PiTShirtThin } from "react-icons/pi";
+// import { CiFlag1 } from "react-icons/ci";
 
 export default function SiteDescription() {
   return (
@@ -29,19 +29,19 @@ export default function SiteDescription() {
       <Container className="my-5">
         <Row>
           <Col md={3} className="details text-center">
-            <CiGlobe className="fs-1 mb-2" />
+            {/*<CiGlobe className="fs-1 mb-2" />*/}
             <h5 className="fw-bold">Shipping Worldwide</h5>
           </Col>
           <Col md={3} className="details text-center">
-            <CiDeliveryTruck className="fs-1 mb-2" />
+            {/*<CiDeliveryTruck className="fs-1 mb-2" />*/}
             <h5 className="fw-bold">Fast Delivery</h5>
           </Col>
           <Col md={3} className="details text-center">
-            <PiTShirtThin className="fs-1 mb-2" />
+            {/*<PiTShirtThin className="fs-1 mb-2" />*/}
             <h5 className="fw-bold">Quality Print</h5>
           </Col>
           <Col md={3} className="details text-center">
-            <CiFlag1 className="fs-1 mb-2" />
+            {/*<CiFlag1 className="fs-1 mb-2" />*/}
             <h5 className="fw-bold">Filipino-made</h5>
           </Col>
         </Row>
