@@ -61,7 +61,7 @@ export default function AppForm() {
       e.preventDefault();
       e.stopPropagation();
     } else {
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/b4/users/register`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
