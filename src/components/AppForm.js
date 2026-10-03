@@ -88,8 +88,13 @@ export default function AppForm() {
             setConfirmPassword("");
             navigate("/login");
             notyf.success("Registration successful");
+          } else {
+            notyf.error(
+              data.message || data?.error?.message || "Registration failed"
+            );
           }
-        });
+        })
+        .catch(() => notyf.error("Could not reach the server. Try again."));
     }
     setValidated(true);
   }
