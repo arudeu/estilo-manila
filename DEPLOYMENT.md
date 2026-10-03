@@ -16,4 +16,6 @@ Local dev: `.env` points to `http://localhost:3004/b4` (see `.env.example`).
 - `.env` now targets localhost instead of the old EC2 server; `.env.example` added.
 - Hero/site JPEGs resized to max 2200px and recompressed (16.9 MB -> 2.0 MB, same filenames).
 - Registration now shows an error toast on failure (e.g. email already registered) instead of failing silently.
+- Home page "Featured Products" no longer crashes when the API returns no products (shows a friendly message). Same guard added to search, admin dashboard, admin orders and profile.
+- Search, profile and admin-orders pages no longer re-fetch endlessly (missing `[]` dependency in useEffect), which was hammering the free backend.
 - The pre-built `build/` folder was left out; Netlify builds it for you.

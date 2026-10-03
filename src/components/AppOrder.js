@@ -13,10 +13,10 @@ export default function AppOrder() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data.orders);
-        console.log(data.orders);
-      });
-  });
+        setOrders(Array.isArray(data.orders) ? data.orders : []);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <Container className="my-5">

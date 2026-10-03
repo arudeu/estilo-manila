@@ -31,7 +31,7 @@ export default function ProductSearch() {
         ) {
           notyf.error("No products found");
         }
-        setResults(data);
+        setResults(Array.isArray(data) ? data : []);
       })
       .catch((err) => {
         console.error(err);
@@ -41,9 +41,10 @@ export default function ProductSearch() {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/product/active`)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
-      });
-  });
+        setProducts(Array.isArray(data) ? data : []);
+      })
+      .catch((err) => console.error(err));
+  }, []);
   const sortProducts = [...products].sort(
     (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
   );

@@ -164,7 +164,7 @@ export default function AppForm() {
               type="tel"
               placeholder="0912 345 6789"
               required
-              pattern="^09[0-9]{9}$"
+              pattern="^\u9[0-9]{10}$"
               value={mobileNo}
               onChange={(e) => {
                 setMobileNo(e.target.value);

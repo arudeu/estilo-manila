@@ -114,7 +114,7 @@ function AppDashBoard() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setProducts(data);
+        setProducts(Array.isArray(data) ? data : []);
       })
       .catch((err) => console.error("Failed to fetch products:", err));
   }

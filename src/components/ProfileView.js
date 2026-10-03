@@ -26,9 +26,8 @@ export default function ProfileView() {
         setEmail(data.email);
         setMobile(data.mobileNo);
         setImage(data.image);
-        console.log(data);
       });
-  });
+  }, []);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/order/my-orders`, {
@@ -38,10 +37,10 @@ export default function ProfileView() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data.orders);
-        console.log(data.orders);
-      });
-  });
+        setOrders(Array.isArray(data.orders) ? data.orders : []);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <Container className="my-5 py-5">
